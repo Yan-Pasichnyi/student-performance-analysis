@@ -39,4 +39,21 @@ This project aims to understand how lifestyle choices, family background, and de
 shape student performance. The analysis includes descriptive statistics, visualizations, and correlation studies  
 to answer the research questions clearly and effectively.
 
+## 🧠 Modeling Results
 
+Two regression models were trained to predict the final grade (G3): a baseline Linear Regression and a Random Forest Regressor.
+
+**Handling G3=0:** 38 students had G3=0, which likely reflects students who did not complete the final exam rather than a genuine low score. These rows were excluded from the modeling dataset.
+
+**Avoiding data leakage:** G1 and G2 (grades from earlier periods) are very strongly correlated with G3 (0.80 and 0.90 in the correlation matrix). Including them as features would let the model "see" a near-answer rather than learn from genuine predictors, so they were excluded from the main models.
+
+
+| Model                  | Features        | MAE  | RMSE |
+|-------------------------|------------------|------|------|
+| Linear Regression        | Without G1/G2     | 2.30 | 2.75 |
+| Random Forest             | Without G1/G2     | 2.23 | 2.73 |
+| Linear Regression (leakage demo) | With G1/G2 | 0.67 | 0.90 |
+
+The near-identical performance of Linear Regression and Random Forest (without G1/G2) suggests the relationships in the data are largely linear, and that family background, lifestyle, and demographic features alone have limited predictive power. Including G1/G2 improves MAE by roughly 3x, clearly demonstrating the effect of data leakage — G1/G2 essentially reveal the answer rather than serve as genuine predictors.
+### Feature Importance (Random Forest)
+[Заполнишь после того, как посмотрим feature_importances_]
