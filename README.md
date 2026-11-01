@@ -56,7 +56,7 @@ Top features (Random Forest, without G1/G2): `absences`, `health`, `failures`, `
 
 **4. Gender?** Small effect — male students show slightly higher median grades (~11 vs ~10), not dramatic.
 
-## 🛠 How to Run Locally
+## 🛠 How to Run Locally 
 
 ```bash
 git clone https://github.com/Yan-Pasichnyi/student-performance-analysis.git
